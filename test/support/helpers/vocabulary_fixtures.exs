@@ -1,4 +1,4 @@
-defmodule VocabularyFixtures do
+defmodule Helpers.VocabularyFixtures do
   def vocabulary_input do
     "input.txt"
       |> read_fixture
