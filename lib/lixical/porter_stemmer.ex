@@ -1,4 +1,5 @@
 defmodule Lixical.PorterStemmer do
+  import Lixical.Regexes
 
   def stem([]), do: []
   def stem(""), do: []
@@ -9,6 +10,29 @@ defmodule Lixical.PorterStemmer do
       # |> step_three
       # |> step_four
       # |> step_five
+  end
+
+  def step_one(input) do
+    input
+  end
+
+  def step_1a(input) do
+    cond do
+      String.ends_with?(input, "sses") ->
+        String.replace_suffix(input, "sses", "ss")
+
+      String.ends_with?(input, "ies") ->
+        String.replace_suffix(input, "ies", "i")
+
+      String.ends_with?(input, "ss") ->
+        String.replace_suffix(input, "ss", "s")
+
+      String.ends_with?(input, "s") ->
+        String.replace_suffix(input, "s", "")
+
+      true ->
+        input
+    end
   end
 
   def stems([]), do: []
@@ -26,19 +50,11 @@ defmodule Lixical.PorterStemmer do
       |> stems
   end
 
-  def stems(input, unique: false) do
-    input
-      |> stems
-      |> remove_duplicates
-  end
-
-  @doc """
-    The number of times within a string that the pattern vowel-consonant appears.
-  """
-  defp measure(word) do
-    Regex.scan(~r/[aeiou]{1}[bcdfghjklmnpqrstvwxyz]{1}/ix, word)
-      |> Enum.count
-  end
+  # def stems(input, unique: false) do
+  #   input
+  #     |> stems
+  #     |> remove_duplicates
+  # end
 
   defp to_list_of_words(string) do
     string

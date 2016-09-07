@@ -19,4 +19,7 @@ defmodule PorterStemmerTest do
     assert ([] |> stems) == []
   end
 
+  test "step 1" do
+    assert step_one("ponies") == "poni"
+  end
 end
