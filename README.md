@@ -1,6 +1,6 @@
 # Lixical
 
-## Let's get Lixical!
+> Let's get Lixical!
 
 For now, I recommend the much-further-along [Gibran](https://github.com/abitdodgy/gibran) library, while this is under active development.
 
