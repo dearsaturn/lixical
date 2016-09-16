@@ -14,8 +14,18 @@ defmodule Lixical.PorterStemmer do
 
   def step_one(input) do
     input
+      |> step_1a
+      |> step_1b
+      |> step_1c
   end
 
+  @doc """
+    SSES -> SS                         caresses  ->  caress
+    IES  -> I                          ponies    ->  poni
+                                       ties      ->  ti
+    SS   -> SS                         caress    ->  caress
+    S    ->                            cats      ->  cat
+  """
   def step_1a(input) do
     cond do
       String.ends_with?(input, "sses") ->
@@ -33,6 +43,31 @@ defmodule Lixical.PorterStemmer do
       true ->
         input
     end
+  end
+
+  @doc """
+    (m>0) EED -> EE                    feed      ->  feed
+                                       agreed    ->  agree
+    (*v*) ED  ->                       plastered ->  plaster
+                                       bled      ->  bled
+    (*v*) ING ->                       motoring  ->  motor
+                                       sing      ->  sing
+  """
+  def step_1b(input) do
+    cond do
+      String.ends_with?(input, "eed") && measure(input) > 0 ->
+        String.replace_suffix(input, "eed", "ee")
+
+      String.ends_with?(input, "ed") && contains_vowel?(input) ->
+        String.replace_suffix(input, "ed", "")
+
+      String.ends_with?(input, "ing") && contains_vowel?(input) ->
+        String.replace_suffix(input, "ing", "")
+    end
+  end
+
+  def step_1c(input) do
+    input
   end
 
   def stems([]), do: []

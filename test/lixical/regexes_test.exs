@@ -14,20 +14,20 @@ defmodule RegexesTest do
     cases = ["faren", "ape"]
       |> Enum.map(&ends_with_cvc?/1)
 
-    assert cases = [true, false]
+    assert cases == [true, false]
   end
 
   test "contains_vowel?" do
     cases = ["a", "b"]
       |> Enum.map(&contains_vowel?/1)
 
-    assert cases = [true, false]
+    assert cases == [true, false]
   end
 
   test "measure" do
     cases = ["tr", "trouble", "troubles"]
       |> Enum.map(&measure/1)
 
-    assert cases = [0, 1, 2]
+    assert cases == [0, 1, 2]
   end
 end
