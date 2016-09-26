@@ -2,9 +2,9 @@
 
 > Let's get Lixical!
 
-For now, I recommend the much-further-along [Gibran](https://github.com/abitdodgy/gibran) library, while this is under active development.
+For now, I recommend the much-further-along [Gibran](https://github.com/abitdodgy/gibran) library, while this is under active development. **Expect breaking changes to be pushed to master.**
 
 I plan to implement several stemming algorithms as well as reach future parity with Gibran with Lixical.
 
 Todo:
- * Split each big Porter Stemmer step into its own module. (will refactor once step 1 is complete).
+ * Step 2+
