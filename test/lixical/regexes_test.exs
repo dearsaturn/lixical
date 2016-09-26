@@ -10,10 +10,6 @@ defmodule RegexesTest do
     assert cases == [true, false]
   end
 
-  test "ends_with?" do
-    assert ends_with?("dogs", "s") == true
-  end
-
   test "ends_with_cvc?" do
     cases = ["faren", "ape"]
       |> Enum.map(&ends_with_cvc?/1)

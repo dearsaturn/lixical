@@ -7,20 +7,8 @@ defmodule Lixical.Regexes do
     Regex.match? ~r/[bcdfghjklmnpqrstvwxyz]{1}[aeiou]{1}[bcdfghjklmnpqrstvwxyz]{1}\z/ix, input
   end
 
-  def ends_with?(input, letter) do
-    String.ends_with? input, letter
-  end
-
-  def ends_with?(input, letters) when is_list(letters) do
-    letters
-      |> Enum.map(fn letter ->
-          ends_with?(input, letter)
-         end)
-      |> Enum.all?
-  end
-
-  def does_not_end_with?(input, letters) when is_list(letters) do
-    ! ends_with?(input, letters)
+  def does_not_end_with?(input, letters) do
+    ! String.ends_with? input, letters
   end
 
   def contains_vowel?(input) do
