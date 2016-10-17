@@ -4,12 +4,12 @@ defmodule PorterStemmer.StepOne do
 
   def run(input) do
     input
-      |> step_1a
-      |> step_1b
-      |> step_1c
+      |> part_a
+      |> part_b
+      |> part_c
   end
 
-  defp step_1a(input) do
+  defp part_a(input) do
     cond do
       ends_with?(input, "sses") ->
         replace_suffix(input, "sses", "ss")
@@ -28,7 +28,7 @@ defmodule PorterStemmer.StepOne do
     end
   end
 
-  defp step_1b(input) do
+  defp part_b(input) do
     cond do
       ends_with?(input, "eed") && measure(input) > 0 ->
         replace_suffix(input, "eed", "ee")
@@ -71,7 +71,7 @@ defmodule PorterStemmer.StepOne do
     end
   end
 
-  defp step_1c(input) do
+  defp part_c(input) do
     if contains_vowel?(input) && ends_with?(input, "y") do
       replace_suffix(input, "y", "i")
     else
