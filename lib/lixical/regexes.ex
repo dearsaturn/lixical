@@ -7,7 +7,7 @@ defmodule Lixical.Regexes do
     Regex.match? ~r/[bcdfghjklmnpqrstvwxyz]{1}[aeiou]{1}[bcdfghjklmnpqrstvwxyz]{1}\z/ix, input
   end
 
-  def does_not_end_with_cvc?(input)
+  def does_not_end_with_cvc?(input) do
     ! ends_with_cvc?(input)
   end
 
@@ -19,8 +19,16 @@ defmodule Lixical.Regexes do
     Regex.match? ~r/[aeiou]/ix, input
   end
 
+  # [C](VC)^m[V]
   def measure(word) do
-    Regex.scan(~r/[aeiou]{1}[bcdfghjklmnpqrstvwxyz]{1}/ix, word)
+    stripped = word |> drop_first_consonant |> drop_last_vowel
+    Regex.scan(~r/[aeiou]{1}[bcdfghjklmnpqrstvwxyz]{1}/ix, stripped)
       |> Enum.count
+  end
+
+  def strip_leading_consonants(word) do
+  end
+
+  def strip_trailing_vowels(word) do
   end
 end

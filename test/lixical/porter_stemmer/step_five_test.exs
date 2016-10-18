@@ -1,7 +1,7 @@
 defmodule PorterStemmer.StepFiveTest do
   use ExUnit.Case
-  doctest PorterStemmer.StepFour
-  import PorterStemmer.StepFour
+  doctest PorterStemmer.StepFive
+  import PorterStemmer.StepFive
 
   test "run" do
     cases = [

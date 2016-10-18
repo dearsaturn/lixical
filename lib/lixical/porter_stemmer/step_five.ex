@@ -10,10 +10,14 @@ defmodule PorterStemmer.StepFive do
 
   defp part_a(input) do
     cond do
+      measure(input) < 1 ->
+        input
+
       measure(input) > 1 && ends_with?(input, "e") ->
         replace_suffix(input, "e", "")
 
-      measure(input) == 1 && does_not_end_with?(input, "oe") ->
+      measure(input) == 1 && does_not_end_with_cvc?(input) ->
+        IO.puts(input)
         replace_suffix(input, "e", "")
 
       true ->
@@ -25,8 +29,10 @@ defmodule PorterStemmer.StepFive do
     cond do
       measure(input) < 1 ->
         input
-      ends_with?(input, "ll") ->
+
+      measure(input) > 1 && ends_with?(input, "ll") ->
         replace_suffix(input, "ll", "l")
+
       true ->
         input
     end
