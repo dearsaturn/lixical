@@ -7,7 +7,9 @@ For now, I recommend the much-further-along [Gibran](https://github.com/abitdodg
 I plan to implement several stemming algorithms as well as reach feature parity with Gibran with Lixical.
 
 Todo:
- * Bug fixes (2 tests are currently failing).
+ * Bug fixes
+   * Not all tests are passing
+   * Measure isn't providing the correct value
  * Parallelization/performance improvements
  * Tokenizer
  * Levenshtein Distance
