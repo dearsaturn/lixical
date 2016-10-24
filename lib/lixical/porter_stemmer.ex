@@ -1,16 +1,17 @@
 defmodule Lixical.PorterStemmer do
-  require PorterStemmer.StepOne, as: StepOne
+  alias PorterStemmer.{
+    StepOne, StepTwo, StepThree, StepFour, StepFive
+  }
 
   def stem([]), do: []
   def stem(""), do: []
   def stem(input) when is_bitstring(input) do
     input
       |> StepOne.run
-      # |> step_one
-      # |> step_two
-      # |> step_three
-      # |> step_four
-      # |> step_five
+      |> StepTwo.run
+      |> StepThree.run
+      |> StepFour.run
+      |> StepFive.run
   end
 
   def stems([]), do: []
@@ -20,9 +21,6 @@ defmodule Lixical.PorterStemmer do
     Enum.map input, &stem/1
   end
 
-  @doc """
-    Outputs a list of word stems given a string.
-  """
   def stems(input) when is_bitstring(input) do
     input
       |> to_list_of_words
@@ -31,6 +29,7 @@ defmodule Lixical.PorterStemmer do
 
   defp to_list_of_words(string) do
     string
+      |> String.downcase
       |> String.replace(~r/[\p{P}\p{S}]/, "") # Remove special characters
       |> String.split(" ") # Split to list of words
   end
