@@ -14,10 +14,10 @@ defmodule PorterStemmerTest do
     assert (vocabulary_input |> stems) == vocabulary_output
   end
 
-  @tag :skip
+  # @tag :skip
   test "returns list of lower-case words given input string" do
     cases = ["", "ABATED abatement"]
-      |> stems
+      |> Enum.map(&stems/1)
     assert cases == [[], ["abat","abat"]]
   end
 

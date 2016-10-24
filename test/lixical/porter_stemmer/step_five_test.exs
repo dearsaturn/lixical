@@ -14,7 +14,7 @@ defmodule PorterStemmer.StepFiveTest do
 
     assert Enum.map(cases, &run/1) == [
       "probat",
-      "rate",
+      "rat",
       "ceas",
       "control",
       "roll"

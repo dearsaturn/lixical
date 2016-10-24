@@ -17,7 +17,6 @@ defmodule PorterStemmer.StepFive do
         replace_suffix(input, "e", "")
 
       measure(input) == 1 && does_not_end_with_cvc?(input) ->
-        IO.puts(input)
         replace_suffix(input, "e", "")
 
       true ->
