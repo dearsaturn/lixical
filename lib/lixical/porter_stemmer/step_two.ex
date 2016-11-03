@@ -1,7 +1,6 @@
 defmodule PorterStemmer.StepTwo do
   import Lixical.Regexes
-  import String, only: [
-    ends_with?: 2, replace_suffix: 3]
+  import String, only: [ends_with?: 2, replace_suffix: 3]
 
   def run(input) do
     cond do
@@ -26,8 +25,8 @@ defmodule PorterStemmer.StepTwo do
       ends_with?(input, "izer") ->
         replace_suffix(input, "izer", "ize")
 
-      ends_with?(input, "abli") ->
-        replace_suffix(input, "abli", "able")
+      ends_with?(input, "bli") ->
+        replace_suffix(input, "bli", "ble")
 
       ends_with?(input, "alli") ->
         replace_suffix(input, "alli", "al")
@@ -70,6 +69,9 @@ defmodule PorterStemmer.StepTwo do
 
       ends_with?(input, "biliti") ->
         replace_suffix(input, "biliti", "ble")
+
+      ends_with?(input, "logi") ->
+        replace_suffix(input, "logi", "log")
 
       true ->
         input
